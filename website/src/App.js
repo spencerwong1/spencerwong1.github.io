@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
+import BasicButtons from './button.js';
+
 function App() {
   return (
     <div className="App">
@@ -15,9 +17,11 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          spencer wong!!!
         </a>
+        <BasicButtons variant="text">Text</BasicButtons>
       </header>
+
     </div>
   );
 }
