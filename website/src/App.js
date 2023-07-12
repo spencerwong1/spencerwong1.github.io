@@ -2,9 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 
 import BasicButtons from './button.js';
+import BasicButtonGroup from './buttongrp.js'
+import Checkboxes from './checkbox.js'
+import RadioButtonsGroup from './buttongrp.js'
 
 function App() {
   return (
+    
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,7 +23,10 @@ function App() {
         >
           spencer wong!!!
         </a>
-        <BasicButtons variant="text">Text</BasicButtons>
+        <BasicButtons></BasicButtons>
+        <BasicButtonGroup></BasicButtonGroup>
+        <Checkboxes></Checkboxes>
+        <RadioButtonsGroup></RadioButtonsGroup>
       </header>
 
     </div>
