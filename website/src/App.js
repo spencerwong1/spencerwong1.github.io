@@ -1,33 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
-import BasicButtons from './button.js';
-import BasicButtonGroup from './buttongrp.js'
-import Checkboxes from './checkbox.js'
-import RadioButtonsGroup from './buttongrp.js'
+import BasicButtons from './components/button.js';
+import BasicButtonGroup from './components/buttongrp.js'
+import Checkboxes from './components/checkbox.js'
+import RadioButtonsGroup from './components/buttongrp.js'
+import BasicRating from './components/rating.js'
 
 function App() {
   return (
     
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          spencer wong!!!
-        </a>
+     
+        <h1>SPENCERS PERSONAL PROJECT</h1>
+
         <BasicButtons></BasicButtons>
         <BasicButtonGroup></BasicButtonGroup>
         <Checkboxes></Checkboxes>
         <RadioButtonsGroup></RadioButtonsGroup>
-      </header>
+        <BasicRating></BasicRating>
 
     </div>
   );

@@ -6,7 +6,7 @@ const BasicButtons = () => {
   return (
     <div>
         <Stack spacing={2} direction="row">
-            <Button variant="BUYE">HI</Button>
+            <Button variant="text">Text</Button>
         </Stack>
     </div>
   );
