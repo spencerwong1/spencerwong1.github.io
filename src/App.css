@@ -1,0 +1,36 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  
+}
+
+
+.board {
+  height: 100vh;
+  background-image: url('/background.png');
+  background-repeat: repeat;
+  background-position: top;
+  background-size: 100% auto;
+}
+.navbar {
+  width: 100vw;
+  height: 135px;
+  background-position: top;
+  background-color: rgb(217,228,232);
+
+  /* background-color: rgb(115, 150, 172); */
+  background-size: 100% auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+/* .profile {
+  height: 135px;      
+  width: calc(vw);    
+  position: absolute;
+  left: 47.05%;
+  background-color: black;
+} */
