@@ -1,0 +1,15 @@
+.navbar {
+  width: 100vw;
+  height: 80px;
+  background-position: top;
+  background-color: #8a8a8a;
+
+  background-size: 100% auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.homeBtn {
+    cursor: pointer;
+}

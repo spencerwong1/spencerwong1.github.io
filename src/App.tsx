@@ -2,13 +2,16 @@
 import React from 'react'
 import Profile from './components/Profile'
 import NavBar from './components/NavBar'
+import Board from './components/Board'
 import './App.css'
 
 export default function App() {
   return (
-      <div className="board">
-        <NavBar />
-        {/* <Profile /> */}
-      </div>
+    <>
+      <NavBar />
+      <main className='main'>
+        <Board />
+      </main>
+    </>
   )
 }
