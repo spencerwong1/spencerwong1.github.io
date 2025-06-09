@@ -6,11 +6,12 @@ import blackKing from '../assets/white-king.png';
 export default function NavBar() {
   return (
     <div className="navbar">
-      <img
+      {/* <img
         src={blackKing}
         className='homeBtn'
         // onClick={handleClick}
-        alt="black king" />
+        alt="black king" /> */}
+        <h1 className="title">Spencers' Chessboard</h1>
     </div>
   )
 }
