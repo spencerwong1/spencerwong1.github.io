@@ -59,7 +59,6 @@ export function isLegalMove(
   fr: number, fc: number,
   tr: number, tc: number
 ): boolean {
-  const N = 8;
   if (!onBoard(fr,fc) || !onBoard(tr,tc)) return false;
   if (fr === tr && fc === tc) return false;
   const piece = board[fr][fc];

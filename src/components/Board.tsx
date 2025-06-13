@@ -45,7 +45,7 @@ export default function Board() {
     e.preventDefault()
     dragStartRef.current = { fromR: r, fromC: c }
 
-    // spawn “ghost” image
+    // spawn ghost image
     const img = e.currentTarget
     const ghost = img.cloneNode(true) as HTMLImageElement
     ghost.style.position    = 'absolute'
