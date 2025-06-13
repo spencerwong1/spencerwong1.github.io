@@ -30,9 +30,11 @@ const initialBoard: ChessBoard = [
 
 export default function Board() {
   const [board, setBoard] = useState<ChessBoard>(initialBoard)
+   const [hoverSquare, setHoverSquare] = useState<{ r: number, c: number }|null>(null)
   const boardRef = useRef<HTMLDivElement>(null)
   const ghostRef = useRef<HTMLImageElement|null>(null)
   const dragStartRef = useRef<{ fromR: number, fromC: number }|null>(null)
+  const [draggingFrom, setDraggingFrom] = useState<{ fromR: number, fromC: number }|null>(null)
 
   const imgOf = (p: ChessPiece) =>
     ({ pawn, rook, knight, bishop, queen, king }[p.type]!)
@@ -44,6 +46,7 @@ export default function Board() {
   ) {
     e.preventDefault()
     dragStartRef.current = { fromR: r, fromC: c }
+    setDraggingFrom({ fromR: r, fromC: c })
 
     // spawn ghost image
     const img = e.currentTarget
@@ -65,9 +68,26 @@ export default function Board() {
 
   function onPointerMove(e: PointerEvent) {
     const ghost = ghostRef.current
-    if (!ghost) return
+    const br    = boardRef.current
+    if (!ghost || !br) return
+
+    // move ghost
     ghost.style.left = `${e.pageX - ghost.clientWidth/2}px`
     ghost.style.top  = `${e.pageY - ghost.clientHeight/2}px`
+
+    // compute which square we're over
+    const rect = br.getBoundingClientRect()
+    const size = rect.width / 8
+    const cx = e.clientX - rect.left
+    const cy = rect.bottom - e.clientY
+    let c = Math.floor(cx / size)
+    let r = Math.floor(cy / size)
+    // only keep it if on-board
+    if (r >= 0 && r < 8 && c >= 0 && c < 8) {
+      setHoverSquare({ r, c })
+    } else {
+      setHoverSquare(null)
+    }
   }
 
   function onPointerUp(e: PointerEvent) {
@@ -87,11 +107,13 @@ export default function Board() {
       if (isLegalMove(board, fr, fc, tr, tc)) {
         setBoard(b => doMove(b, fr, fc, tr, tc))
       }
-
       document.body.removeChild(ghost)
-      ghostRef.current     = null
-      dragStartRef.current = null
     }
+
+    // cleanup fade state & refs
+    setDraggingFrom(null)
+    dragStartRef.current = null
+    ghostRef.current     = null
 
     ;(e.target as HTMLElement).releasePointerCapture(e.pointerId)
   }
@@ -104,14 +126,22 @@ export default function Board() {
           .map((row, revR) =>
             row.map((piece, c) => {
               const r = 7 - revR
+              const isHovered = hoverSquare?.r === r && hoverSquare?.c === c
               return (
-                <div key={`${r}-${c}`} className="square">
+                <div key={`${r}-${c}`} className={`square${isHovered ? ' hovered' : ''}`}>
                   {piece && (
                     <img
                       draggable={false}
                       src={imgOf(piece)}
                       onPointerDown={e => onPointerDown(e, r, c)}
                       className="piece"
+                      style={{
+                        opacity:
+                          draggingFrom?.fromR === r
+                          && draggingFrom?.fromC === c
+                            ? 0.5
+                            : 1
+                      }}
                     />
                   )}
                 </div>
