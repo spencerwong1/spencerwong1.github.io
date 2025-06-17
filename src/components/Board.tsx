@@ -1,6 +1,6 @@
 // src/Board.tsx
 import React, { useRef, useState } from 'react'
-import { isLegalMove, doMove } from '../chessRules'
+import { isLegalMove, doMove, addPiecesToBoard } from '../chessRules'
 import '../css/board.css'
 import pawn   from '../assets/wp.png'
 import rook   from '../assets/wr.png'
@@ -8,36 +8,78 @@ import knight from '../assets/wn.png'
 import bishop from '../assets/wb.png'
 import queen  from '../assets/wq.png'
 import king   from '../assets/wk.png'
-import type { Piece as ChessPiece, Board as ChessBoard } from '../chessRules'
+import ezmail from '../assets/ezmail.png';
+import dropfinder from '../assets/dropfinder1.png';
+import github from '../assets/github.png';
+import linkedin from '../assets/linkedin.png';
+import profile from '../assets/black-king.png';
+import stock from '../assets/stock.png';
+import type { Piece as ChessPiece, Board as ChessBoard, Placement } from '../chessRules'
 
 const initialBoard: ChessBoard = [
   [
-  { type: 'rook',   moved: false },
-  { type: 'knight', moved: false },
-  { type: 'bishop', moved: false },
-  { type: 'queen',  moved: false },
-  { type: 'king',   moved: false },
-  { type: 'bishop', moved: false },
-  { type: 'knight', moved: false },
-  { type: 'rook',   moved: false }
+  { type: 'rook',   moved: false, color: 'white' },
+  { type: 'knight', moved: false, color: 'white'},
+  { type: 'bishop', moved: false, color: 'white' },
+  { type: 'queen',  moved: false, color: 'white' },
+  { type: 'king',   moved: false, color: 'white' },
+  { type: 'bishop', moved: false, color: 'white' },
+  { type: 'knight', moved: false, color: 'white' },
+  { type: 'rook',   moved: false, color: 'white' }
   ],
   // rank 1: 8 pawns
-  Array<ChessPiece | null>(8).fill({ type: 'pawn', moved: false }),
+  Array<ChessPiece | null>(8).fill({ type: 'pawn', moved: false, color: 'white' }),
 
   // ranks 2–7: empty
   ...Array.from({ length: 6 }, () => Array<ChessPiece | null>(8).fill(null)),
 ]
 
+const customPlacements: Placement[] = [
+  { row: 5, col: 5, piece: { type: 'dropfinder', moved: false, color: 'black' } },
+  { row: 4, col: 2, piece: { type: 'ezmail', moved: false, color: 'black' } },
+  { row: 7, col: 6, piece: { type: 'github', moved: false, color: 'black' } },
+  { row: 6, col: 1, piece: { type: 'linkedin', moved: false, color: 'black' } },
+  { row: 6, col: 3, piece: { type: 'profile', moved: false, color: 'black' } },
+  { row: 4, col: 7, piece: { type: 'stock', moved: false, color: 'black' } },
+];
+
 export default function Board() {
-  const [board, setBoard] = useState<ChessBoard>(initialBoard)
-   const [hoverSquare, setHoverSquare] = useState<{ r: number, c: number }|null>(null)
+  const [board, setBoard] = useState<ChessBoard>(
+    () => addPiecesToBoard(initialBoard, customPlacements)
+  );
+  const [hoverSquare, setHoverSquare] = useState<{ r: number, c: number }|null>(null)
   const boardRef = useRef<HTMLDivElement>(null)
   const ghostRef = useRef<HTMLImageElement|null>(null)
   const dragStartRef = useRef<{ fromR: number, fromC: number }|null>(null)
   const [draggingFrom, setDraggingFrom] = useState<{ fromR: number, fromC: number }|null>(null)
 
   const imgOf = (p: ChessPiece) =>
-    ({ pawn, rook, knight, bishop, queen, king }[p.type]!)
+    ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, stock}[p.type]!)
+
+  function handleCapture(type: ChessPiece['type']) {
+    switch (type) {
+      case 'ezmail':
+        console.log('Captured EZMAIL!')
+        break
+      case 'dropfinder':
+        console.log('Captured DropFinder!')
+        break
+      case 'github':
+        console.log('Captured GitHub!')
+        break
+      case 'linkedin':
+        console.log('Captured LinkedIn!')
+        break
+      case 'profile':
+        console.log('Captured Profile!')
+        break
+      case 'stock':
+        console.log('Captured Stock!')
+        break
+      default:
+        break
+    }
+  }
 
   function onPointerDown(
     e: React.PointerEvent<HTMLImageElement>,
@@ -104,9 +146,14 @@ export default function Board() {
       const tr   = Math.floor((rect.bottom - e.clientY) / sq)
       const { fromR: fr, fromC: fc } = start
 
+      const target = board[tr][tc]
       if (isLegalMove(board, fr, fc, tr, tc)) {
+        if (target && ['ezmail','dropfinder','github','linkedin','profile','stock'].includes(target.type)) {
+          handleCapture(target.type)
+        }
         setBoard(b => doMove(b, fr, fc, tr, tc))
       }
+
       document.body.removeChild(ghost)
     }
 
