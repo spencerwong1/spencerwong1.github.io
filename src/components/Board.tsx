@@ -1,4 +1,3 @@
-// src/Board.tsx
 import React, { useRef, useState } from 'react'
 import { isLegalMove, doMove, addPiecesToBoard } from '../chessRules'
 import '../css/board.css'
@@ -13,7 +12,7 @@ import dropfinder from '../assets/dropfinder1.png';
 import github from '../assets/github.png';
 import linkedin from '../assets/linkedin.png';
 import profile from '../assets/black-king.png';
-import stock from '../assets/stock.png';
+import cryptoKraker from '../assets/cryptoKraker.png';
 import type { Piece as ChessPiece, Board as ChessBoard, Placement } from '../chessRules'
 
 const initialBoard: ChessBoard = [
@@ -40,7 +39,7 @@ const customPlacements: Placement[] = [
   { row: 7, col: 6, piece: { type: 'github', moved: false, color: 'black' } },
   { row: 6, col: 1, piece: { type: 'linkedin', moved: false, color: 'black' } },
   { row: 6, col: 3, piece: { type: 'profile', moved: false, color: 'black' } },
-  { row: 4, col: 7, piece: { type: 'stock', moved: false, color: 'black' } },
+  { row: 4, col: 7, piece: { type: 'cryptoKraker', moved: false, color: 'black' } },
 ];
 
 export default function Board() {
@@ -54,26 +53,26 @@ export default function Board() {
   const [draggingFrom, setDraggingFrom] = useState<{ fromR: number, fromC: number }|null>(null)
 
   const imgOf = (p: ChessPiece) =>
-    ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, stock}[p.type]!)
+    ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, cryptoKraker}[p.type]!)
 
   function handleCapture(type: ChessPiece['type']) {
     switch (type) {
+      case 'github':
+        window.open('https://github.com/spencerwong1', '_blank')
+        break
+        case 'linkedin':
+        window.open('https://www.linkedin.com/in/spencerwongg/', '_blank')
+        break
       case 'ezmail':
         console.log('Captured EZMAIL!')
         break
       case 'dropfinder':
         console.log('Captured DropFinder!')
         break
-      case 'github':
-        console.log('Captured GitHub!')
-        break
-      case 'linkedin':
-        console.log('Captured LinkedIn!')
-        break
       case 'profile':
         console.log('Captured Profile!')
         break
-      case 'stock':
+      case 'cryptoKraker':
         console.log('Captured Stock!')
         break
       default:
