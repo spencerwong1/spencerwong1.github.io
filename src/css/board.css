@@ -57,3 +57,11 @@
 .piece:active {
   cursor: url('/grab-cursor.png') 4 4, auto;
 }
+
+
+@media screen and (max-width: 800px) {
+  .board {
+    width: 85vw;
+    height: auto;
+  }
+}

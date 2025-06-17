@@ -15,11 +15,3 @@ html, body, #root {
   align-items: center;
   height: calc(100vh - 80px); /* accounting for navbar */
 }
-
-/* .profile {
-  height: 135px;      
-  width: calc(vw);    
-  position: absolute;
-  left: 47.05%;
-  background-color: black;
-} */
