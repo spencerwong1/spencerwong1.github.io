@@ -51,12 +51,19 @@ export default function Board() {
   const ghostRef = useRef<HTMLImageElement|null>(null)
   const dragStartRef = useRef<{ fromR: number, fromC: number }|null>(null)
   const [draggingFrom, setDraggingFrom] = useState<{ fromR: number, fromC: number }|null>(null)
+  const [progress, setProgress] = useState(50);
+  const [blackPieces, setBlackPieces] = useState(6);
 
   const imgOf = (p: ChessPiece) =>
     ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, cryptoKraker}[p.type]!)
 
-  function handleCapture(type: ChessPiece['type']) {
-    switch (type) {
+  function handleCapture(target: ChessPiece) {
+    if (target.color == 'black') {
+      setProgress(progress + 50/6);
+      setBlackPieces(blackPieces - 1);
+    }
+
+    switch (target.type) {
       case 'github':
         window.open('https://github.com/spencerwong1', '_blank')
         break
@@ -147,8 +154,8 @@ export default function Board() {
 
       const target = board[tr][tc]
       if (isLegalMove(board, fr, fc, tr, tc)) {
-        if (target && ['ezmail','dropfinder','github','linkedin','profile','stock'].includes(target.type)) {
-          handleCapture(target.type)
+        if (target && ['ezmail','dropfinder','github','linkedin','profile','stock','cryptoKraker'].includes(target.type)) {
+          handleCapture(target)
         }
         setBoard(b => doMove(b, fr, fc, tr, tc))
       }
@@ -165,36 +172,49 @@ export default function Board() {
   }
 
   return (
-    <div className="border">
-      <div ref={boardRef} className="board">
-        {board
-          .slice().reverse()
-          .map((row, revR) =>
-            row.map((piece, c) => {
-              const r = 7 - revR
-              const isHovered = hoverSquare?.r === r && hoverSquare?.c === c
-              return (
-                <div key={`${r}-${c}`} className={`square${isHovered ? ' hovered' : ''}`}>
-                  {piece && (
-                    <img
-                      draggable={false}
-                      src={imgOf(piece)}
-                      onPointerDown={e => onPointerDown(e, r, c)}
-                      className="piece"
-                      style={{
-                        opacity:
-                          draggingFrom?.fromR === r
-                          && draggingFrom?.fromC === c
-                            ? 0.5
-                            : 1
-                      }}
-                    />
-                  )}
-                </div>
-              )
-            })
-          )
-        }
+    <div className="board-wrapper">
+      {/* Progress bar container */}
+      <div className="progress-bar">
+        <div
+          className="progress-fill"
+          style={{ height: `${progress}%` }}
+        />
+        <div className="progress-label">
+          {blackPieces !== 0 ? `M${blackPieces}` : '1-0'}
+        </div>
+      </div>
+
+      <div className="border">
+        <div ref={boardRef} className="board">
+          {board
+            .slice().reverse()
+            .map((row, revR) =>
+              row.map((piece, c) => {
+                const r = 7 - revR
+                const isHovered = hoverSquare?.r === r && hoverSquare?.c === c
+                return (
+                  <div key={`${r}-${c}`} className={`square${isHovered ? ' hovered' : ''}`}>
+                    {piece && (
+                      <img
+                        draggable={false}
+                        src={imgOf(piece)}
+                        onPointerDown={e => onPointerDown(e, r, c)}
+                        className="piece"
+                        style={{
+                          opacity:
+                            draggingFrom?.fromR === r
+                            && draggingFrom?.fromC === c
+                              ? 0.5
+                              : 1
+                        }}
+                      />
+                    )}
+                  </div>
+                )
+              })
+            )
+          }
+        </div>
       </div>
     </div>
   )

@@ -1,13 +1,4 @@
 .border {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  left: 50%;
-  top: 500px;
-  transform: translate(-50%, -50%);
-
-  /* Frame styling */
   border: 10px solid #585858;
   border-radius: 8px;
   padding: 10px;
@@ -64,4 +55,47 @@
     width: 85vw;
     height: auto;
   }
+}
+
+/* The parent: two‐column flex (bar + board) */
+.board-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 500px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+/* The skinny vertical track on the left */
+.progress-bar {
+  width: 30px;              /* thickness of the bar */
+  background: #444;        /* track color */
+  margin-right: 12px;      /* space between bar & board */
+  border-radius: 5px;      /* rounded corners on track */
+  overflow: hidden;        /* clip the fill */
+  position: relative;
+}
+
+/* The colored fill that grows from bottom up */
+.progress-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;        /* fill color (you can change) */
+  transition: height 1s ease;
+}
+
+.progress-label {
+  position: absolute;
+  bottom: 3px;
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 12px;
 }
