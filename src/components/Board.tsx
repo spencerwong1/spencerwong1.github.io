@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useMemo, useEffect } from 'react'
 import { isLegalMove, doMove, addPiecesToBoard } from '../chessRules'
 import '../css/board.css'
 import pawn   from '../assets/wp.png'
@@ -51,16 +51,42 @@ export default function Board() {
   const ghostRef = useRef<HTMLImageElement|null>(null)
   const dragStartRef = useRef<{ fromR: number, fromC: number }|null>(null)
   const [draggingFrom, setDraggingFrom] = useState<{ fromR: number, fromC: number }|null>(null)
-  const [progress, setProgress] = useState(50);
+  const [progress, setProgress] = useState(0);
   const [blackPieces, setBlackPieces] = useState(6);
+
+  const [initial, setInitial] = useState(true);
+
+  useEffect(() => {
+    // after 2s of max delay + 0.5s anim, remove the class
+    const totalMs = (2 + 0.5) * 1000;
+    const id = setTimeout(() => setInitial(false), totalMs);
+    return () => clearTimeout(id);
+  }, []);
+
+
+
+  useEffect(() => {
+    const t = setTimeout(() => setProgress(50), 100);
+    return () => clearTimeout(t);
+  }, []);
+
+  
+  // Precompute random delays (0–2s) for each square once
+  const delays = useMemo(
+  () =>
+    Array.from({ length: 8 }, () =>
+      Array.from({ length: 8 }, () => Math.random() * 2)  // 0–2 seconds
+    ),
+  []
+);
 
   const imgOf = (p: ChessPiece) =>
     ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, cryptoKraker}[p.type]!)
 
   function handleCapture(target: ChessPiece) {
     if (target.color == 'black') {
-      setProgress(progress + 50/6);
-      setBlackPieces(blackPieces - 1);
+      setProgress(p => p + 50/6);
+      setBlackPieces(n => n - 1);
     }
 
     switch (target.type) {
@@ -80,7 +106,7 @@ export default function Board() {
         console.log('Captured Profile!')
         break
       case 'cryptoKraker':
-        console.log('Captured Stock!')
+        console.log('Captured cryptoKraker!')
         break
       default:
         break
@@ -154,7 +180,7 @@ export default function Board() {
 
       const target = board[tr][tc]
       if (isLegalMove(board, fr, fc, tr, tc)) {
-        if (target && ['ezmail','dropfinder','github','linkedin','profile','stock','cryptoKraker'].includes(target.type)) {
+        if (target && ['ezmail','dropfinder','github','linkedin','profile','cryptoKraker'].includes(target.type)) {
           handleCapture(target)
         }
         setBoard(b => doMove(b, fr, fc, tr, tc))
@@ -172,7 +198,7 @@ export default function Board() {
   }
 
   return (
-    <div className="board-wrapper">
+    <div className={`board-wrapper${initial ? ' initial' : ''}`}>
       {/* Progress bar container */}
       <div className="progress-bar">
         <div
@@ -201,12 +227,9 @@ export default function Board() {
                         onPointerDown={e => onPointerDown(e, r, c)}
                         className="piece"
                         style={{
-                          opacity:
-                            draggingFrom?.fromR === r
-                            && draggingFrom?.fromC === c
-                              ? 0.5
-                              : 1
-                        }}
+                          /* just set the per-square delay */
+                          '--delay': `${delays[r][c]}s`
+                        } as React.CSSProperties}
                       />
                     )}
                   </div>

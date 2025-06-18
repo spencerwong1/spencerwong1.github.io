@@ -1,3 +1,14 @@
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.3); }
+  60%  { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 .border {
   border: 10px solid #585858;
   border-radius: 8px;
@@ -35,10 +46,18 @@
 }
 
 .piece {
+  opacity: 1;
+  animation: none;
   pointer-events: auto;
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* only apply popIn when .initial is present on the wrapper */
+.board-wrapper.initial .piece {
+  animation: popIn 0.5s ease both;
+  animation-delay: var(--delay, 0s);
 }
 
 .piece:hover {
@@ -49,21 +68,14 @@
   cursor: url('/grab-cursor.png') 4 4, auto;
 }
 
-
-@media screen and (max-width: 800px) {
-  .board {
-    width: 85vw;
-    height: auto;
-  }
-}
-
-/* The parent: two‐column flex (bar + board) */
 .board-wrapper {
+  opacity: 0;                              /* start invisible */
+  animation: fadeIn 0.5s ease-in-out 0.2s forwards;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 50%;
+  left: 47.5%;
   top: 500px;
   transform: translate(-50%, -50%);
   display: flex;
@@ -71,7 +83,6 @@
   align-items: stretch;
 }
 
-/* The skinny vertical track on the left */
 .progress-bar {
   width: 30px;              /* thickness of the bar */
   background: #444;        /* track color */
@@ -87,8 +98,10 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: white;        /* fill color (you can change) */
-  transition: height 1s ease;
+  background: white;
+  /* animate height changes over 2s */
+  transition: height 2s ease;
+  height: 0; /* ensure we start at zero */
 }
 
 .progress-label {
@@ -99,3 +112,11 @@
   color: black;
   font-size: 12px;
 }
+
+@media screen and (max-width: 880px) {
+  .board {
+    width: 80vw;
+    height: auto;
+  }
+}
+
