@@ -19,7 +19,7 @@ import dropfinder from '../assets/dropfinder1.png';
 import github from '../assets/github.png';
 import linkedin from '../assets/linkedin.png';
 import profile from '../assets/black-king.png';
-import cryptoKraker from '../assets/cryptoKraker.png';
+import cryptoKraker from '../assets/Cryptokraker.png';
 
 import { CapturedCard } from './CapturedCard';
 
