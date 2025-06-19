@@ -1,5 +1,3 @@
-// src/Profile.tsx
-import React from 'react'
 import '../css/navbar.css'
 
 export default function NavBar() {

@@ -1,7 +1,7 @@
 import type { Piece } from "../chessRules";
 import Dropfinder from "./Dropfinder";
 import Ezmail from "./Ezmail";
-import Cryptokraker from "./CryptoKraker";
+import Cryptokraker from "./Cryptokraker";
 import Profile from "./Profile";
 
 export function CapturedCard({ piece }: { piece: Piece }) {
