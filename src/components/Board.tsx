@@ -61,6 +61,8 @@ export default function Board() {
   const [progress, setProgress] = useState(0);
   const [blackPieces, setBlackPieces] = useState(6);
   const [capturedPiece, setCapturedPiece] = useState<Piece | null>(null);
+  const [dragging, setDragging] = useState<{ r: number, c: number } | null>(null);
+
 
   const [initial, setInitial] = useState(true);
 
@@ -100,8 +102,14 @@ export default function Board() {
       case 'github':
         window.open('https://github.com/spencerwong1', '_blank')
         break
-        case 'linkedin':
+      case 'linkedin':
         window.open('https://www.linkedin.com/in/spencerwongg/', '_blank')
+        break
+      case 'ezmail':
+        window.open('https://spencerwong1.github.io/ezmail/', '_blank')
+        break
+      case 'dropfinder':
+        window.open('https://spencerwong1.github.io/dropfinder/', '_blank')
         break
       default:
         break
@@ -130,6 +138,10 @@ export default function Board() {
 
     document.addEventListener('pointermove', onPointerMove)
     document.addEventListener('pointerup',   onPointerUp)
+
+    dragStartRef.current = { fromR: r, fromC: c };
+    setDragging({ r, c }); // set dragging state
+
 
     img.setPointerCapture(e.pointerId)
   }
@@ -184,6 +196,12 @@ export default function Board() {
     }
 
     // cleanup fade state & refs
+
+    dragStartRef.current = null;
+    ghostRef.current = null;
+    setDragging(null); // reset dragging
+
+
     dragStartRef.current = null
     ghostRef.current     = null
 
@@ -218,7 +236,7 @@ export default function Board() {
                         draggable={false}
                         src={imgOf(piece)}
                         onPointerDown={e => onPointerDown(e, r, c)}
-                        className="piece"
+                        className={`piece${dragging?.r === r && dragging?.c === c ? ' faded' : ''}`}
                         style={{
                           /* just set the per-square delay */
                           '--delay': `${delays[r][c]}s`
