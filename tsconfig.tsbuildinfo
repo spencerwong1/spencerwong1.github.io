@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/chessrules.ts","./src/main.tsx","./src/vite-env.d.ts","./src/components/board.tsx","./src/components/capturedcard.tsx","./src/components/cryptokraker.tsx","./src/components/dropfinder.tsx","./src/components/ezmail.tsx","./src/components/navbar.tsx","./src/components/profile.tsx"],"errors":true,"version":"5.8.3"}
