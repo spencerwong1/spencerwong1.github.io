@@ -4,3 +4,7 @@ implement stack --> storing states after each move --> reverse button?
 possibly add different themes to pick 
 
 how to play question mark icon?
+
+LETS GET A MVP GOING
+
+restart button refreshes the screen

@@ -1,8 +1,7 @@
-// src/Profile.tsx
-import React from 'react'
-import '../App.css'
+
+import React from 'react';
+import '../css/profile.css';  // make sure this file is loaded
 
 export default function Profile() {
-  return (<></>
-  )
+  return <div className="profile-box"/>;
 }

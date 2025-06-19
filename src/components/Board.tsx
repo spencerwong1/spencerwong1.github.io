@@ -1,6 +1,13 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react'
 import { isLegalMove, doMove, addPiecesToBoard } from '../chessRules'
 import '../css/board.css'
+import type { 
+  Piece as Piece,
+  Board as ChessBoard,
+  Placement
+} from '../chessRules'
+
+// png imports 
 import pawn   from '../assets/wp.png'
 import rook   from '../assets/wr.png'
 import knight from '../assets/wn.png'
@@ -13,7 +20,8 @@ import github from '../assets/github.png';
 import linkedin from '../assets/linkedin.png';
 import profile from '../assets/black-king.png';
 import cryptoKraker from '../assets/cryptoKraker.png';
-import type { Piece as ChessPiece, Board as ChessBoard, Placement } from '../chessRules'
+
+import { CapturedCard } from './CapturedCard';
 
 const initialBoard: ChessBoard = [
   [
@@ -27,10 +35,10 @@ const initialBoard: ChessBoard = [
   { type: 'rook',   moved: false, color: 'white' }
   ],
   // rank 1: 8 pawns
-  Array<ChessPiece | null>(8).fill({ type: 'pawn', moved: false, color: 'white' }),
+  Array<Piece | null>(8).fill({ type: 'pawn', moved: false, color: 'white' }),
 
   // ranks 2–7: empty
-  ...Array.from({ length: 6 }, () => Array<ChessPiece | null>(8).fill(null)),
+  ...Array.from({ length: 6 }, () => Array<Piece | null>(8).fill(null)),
 ]
 
 const customPlacements: Placement[] = [
@@ -50,9 +58,9 @@ export default function Board() {
   const boardRef = useRef<HTMLDivElement>(null)
   const ghostRef = useRef<HTMLImageElement|null>(null)
   const dragStartRef = useRef<{ fromR: number, fromC: number }|null>(null)
-  const [draggingFrom, setDraggingFrom] = useState<{ fromR: number, fromC: number }|null>(null)
   const [progress, setProgress] = useState(0);
   const [blackPieces, setBlackPieces] = useState(6);
+  const [capturedPiece, setCapturedPiece] = useState<Piece | null>(null);
 
   const [initial, setInitial] = useState(true);
 
@@ -62,8 +70,6 @@ export default function Board() {
     const id = setTimeout(() => setInitial(false), totalMs);
     return () => clearTimeout(id);
   }, []);
-
-
 
   useEffect(() => {
     const t = setTimeout(() => setProgress(50), 100);
@@ -80,33 +86,22 @@ export default function Board() {
   []
 );
 
-  const imgOf = (p: ChessPiece) =>
+  const imgOf = (p: Piece) =>
     ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, cryptoKraker}[p.type]!)
 
-  function handleCapture(target: ChessPiece) {
+  // Open websites upon github or linkedin
+  function handleCapture(target: Piece) {
     if (target.color == 'black') {
       setProgress(p => p + 50/6);
       setBlackPieces(n => n - 1);
+      setCapturedPiece(target);
     }
-
     switch (target.type) {
       case 'github':
         window.open('https://github.com/spencerwong1', '_blank')
         break
         case 'linkedin':
         window.open('https://www.linkedin.com/in/spencerwongg/', '_blank')
-        break
-      case 'ezmail':
-        console.log('Captured EZMAIL!')
-        break
-      case 'dropfinder':
-        console.log('Captured DropFinder!')
-        break
-      case 'profile':
-        console.log('Captured Profile!')
-        break
-      case 'cryptoKraker':
-        console.log('Captured cryptoKraker!')
         break
       default:
         break
@@ -120,7 +115,6 @@ export default function Board() {
   ) {
     e.preventDefault()
     dragStartRef.current = { fromR: r, fromC: c }
-    setDraggingFrom({ fromR: r, fromC: c })
 
     // spawn ghost image
     const img = e.currentTarget
@@ -190,7 +184,6 @@ export default function Board() {
     }
 
     // cleanup fade state & refs
-    setDraggingFrom(null)
     dragStartRef.current = null
     ghostRef.current     = null
 
@@ -239,6 +232,7 @@ export default function Board() {
           }
         </div>
       </div>
+      {capturedPiece && <CapturedCard piece={capturedPiece} />}
     </div>
   )
 }

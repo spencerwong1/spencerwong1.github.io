@@ -1,6 +1,6 @@
 import '../App.css'
 
-export default function Dropfinder() {
+export default function Cryptokraker() {
   return (<></>
   )
 }
