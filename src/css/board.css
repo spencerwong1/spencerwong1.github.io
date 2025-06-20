@@ -10,11 +10,11 @@
 }
 
 .border {
-  border: 10px solid #585858;
-  border-radius: 8px;
-  padding: 10px;
+  border: 0.6rem solid #585858;
+  border-radius: 0.4rem;
+  padding: 0.5rem;
   background-color: #2f2f2f;
-  box-shadow: 0 0 50px black;
+  box-shadow: 0 0 3rem black;
   border-style: outset; 
 
   width: fit-content;
@@ -22,8 +22,7 @@
 }
 
 .board {
-  width: 750px;
-  height: 750px;
+  width: 39rem;
   background-image: url('/board.png');
   background-repeat: no-repeat;
   background-size: cover;
@@ -42,7 +41,7 @@
 
 /* highlight the square under the cursor while dragging */
 .square.hovered {
-  box-shadow: inset 0 0 0 4px white;
+  box-shadow: inset 0 0 0 0.25rem white;
 }
 
 .piece {
@@ -74,25 +73,29 @@
 }
 
 .board-wrapper {
-  opacity: 0;                              /* start invisible */
+  opacity: 0;
   animation: fadeIn 0.5s ease-in-out 0.2s forwards;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 47.5%;
-  top: 500px;
-  transform: translate(-50%, -50%);
+  top: 5.3rem;
+  left: 26rem;
   display: flex;
   flex-direction: row;
   align-items: stretch;
 }
 
+.board-wrapper.shifted {
+  /* only when there’s a capturedPiece */
+  transform: translateX(-20%);
+}
+
 .progress-bar {
-  width: 30px;              /* thickness of the bar */
+  width: 1.7rem;              /* thickness of the bar */
   background: #444;        /* track color */
-  margin-right: 12px;      /* space between bar & board */
-  border-radius: 5px;      /* rounded corners on track */
+  margin-right: 1rem;      /* space between bar & board */
+  border-radius: 0.3rem;      /* rounded corners on track */
   overflow: hidden;        /* clip the fill */
   position: relative;
 }
@@ -111,16 +114,9 @@
 
 .progress-label {
   position: absolute;
-  bottom: 3px;
+  bottom: 0.2rem;
   width: 100%;
   text-align: center;
   color: black;
-  font-size: 12px;
-}
-
-@media screen and (max-width: 880px) {
-  .board {
-    width: 80vw;
-    height: auto;
-  }
+  font-size: 0.6rem;
 }
