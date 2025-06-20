@@ -11,7 +11,7 @@ export default function Profile() {
 
       <div className="profile-card">
         <div className="title-box">
-          <h1 className="title-text text"> Profile Card </h1>
+          <h1 className="title-text white"> Profile Card </h1>
         </div>
         <div className="img-box">
           <img
@@ -34,7 +34,7 @@ export default function Profile() {
           </div>
           <div className="text-box text">
             <span> Favourite Opening: </span>
-            <span> The Ruy Lopez </span>
+            <span> Ruy Lopez </span>
           </div>
         </div>
       </div>
