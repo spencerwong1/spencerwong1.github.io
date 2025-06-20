@@ -209,7 +209,12 @@ export default function Board() {
   }
 
   return (
-    <div className={`board-wrapper${initial ? ' initial' : ''}`}>
+      <div
+        className={
+          `board-wrapper${initial ? ' initial' : ''}` +
+          (capturedPiece?.type === 'profile' ? ' shifted' : '')
+        }
+      >
       {/* Progress bar container */}
       <div className="progress-bar">
         <div
