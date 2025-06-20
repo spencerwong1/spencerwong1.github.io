@@ -7,11 +7,12 @@ html, body, #root {
   background-color: rgb(217,228,232);
   cursor: url('/cursor.png') 0 0, auto;
   overflow: hidden;
+  font-size: 1vw;
 }
 
-.main {
+/* .main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 80px); /* accounting for navbar */
-}
+  height: calc(100vh - 80px);
+} */
