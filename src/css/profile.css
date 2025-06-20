@@ -1,23 +1,28 @@
 
 .text {
     color: rgb(217,228,232);
+    font-size: 0.85rem;
+}
+
+.white {
+    color: rgb(217,228,232);
 }
 
 .profile-box {
-    width: 500px;
-    margin-left: 50px;
+    margin-left: 3rem;
     display: flex;
     flex-direction: column;
 }
 
 .brilliant-box {
+    height: 2.2rem;
     padding: 0.5rem;
-    border-bottom: 2px solid black;
+    border-bottom: 0.11rem solid black;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0px;
-    margin-bottom: 20px;
+    border-radius: 0rem;
+    margin-bottom: 1.1rem;
 }
 
 
@@ -27,15 +32,14 @@
 }
 
 
-/* Profile Card */
 
 .profile-card {
     display: flex;
     flex-direction: column;
     background-color: #2f2f2f;
-    border-radius: 10px;
-    border: 10px solid #585858;
-    border-radius: 8px;
+    border-radius: 2rem;
+    border: 0.4rem solid #585858;
+    border-radius: 0.3rem;
     padding: 1rem;
     border-style: outset;
     flex: 1;
@@ -43,7 +47,7 @@
 
 .title-box {
     padding: 0.5rem;
-    border: 4px;
+    border: 0.25rem;
     border-color: 
         rgb(200,200,200)
         #2f2f2f
@@ -53,29 +57,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 6px;
-    /* background-color: rgb(90,90,90); */
+    border-radius: 0.2rem;
 }
 
 .img-box {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 7px 0px;
+    margin: 0.4rem 0rem;
     background-color: white;
     padding-top: 1rem;
     background-image: url("src/assets/background.png");
-    border: 5px solid #585858;
+    border: 0.3rem solid #585858;
     background-color: #2f2f2f;
     border-style: outset; 
 }
 
 .profile-img {
-    width: 70%;
-    margin: 0px;
+    width: 16rem;
+    margin: 0rem;
 }
 
 .title-text {
+    font-size: 1.6rem;
     margin: 0;
     display: inline-flex;
     align-items: center;
@@ -85,15 +89,15 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 0rem 0.8rem;
+    padding: 0.4rem 0.8rem;
     background-color: rgb(90,90,90)
 }
 
 .text-box {
   display: flex;
   justify-content: space-between;
-  padding: 10px 12px;
-  width: 400px;
-  box-shadow: 2px 2px black;
-  margin: 6px 0;
+  padding: 0.5rem 0.5rem;
+  width: 20.5rem;
+  box-shadow: 0.1rem 0.1rem black;
+  margin: 0.25rem 0;
 }
