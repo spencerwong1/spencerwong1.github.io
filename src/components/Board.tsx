@@ -42,11 +42,11 @@ const initialBoard: ChessBoard = [
 ]
 
 const customPlacements: Placement[] = [
-  { row: 5, col: 5, piece: { type: 'dropfinder', moved: false, color: 'black' } },
-  { row: 4, col: 2, piece: { type: 'ezmail', moved: false, color: 'black' } },
+  { row: 6, col: 3, piece: { type: 'dropfinder', moved: false, color: 'black' } },
+  { row: 5, col: 5, piece: { type: 'ezmail', moved: false, color: 'black' } },
   { row: 7, col: 6, piece: { type: 'github', moved: false, color: 'black' } },
   { row: 6, col: 1, piece: { type: 'linkedin', moved: false, color: 'black' } },
-  { row: 6, col: 3, piece: { type: 'profile', moved: false, color: 'black' } },
+  { row: 4, col: 2, piece: { type: 'profile', moved: false, color: 'black' } },
   { row: 4, col: 7, piece: { type: 'cryptoKraker', moved: false, color: 'black' } },
 ];
 
