@@ -101,3 +101,25 @@
   box-shadow: 0.1rem 0.1rem black;
   margin: 0.25rem 0;
 }
+
+
+@media (orientation: portrait) {
+    .brilliant-text {
+        font-size: 4rem;
+    }
+    .brilliant-box {
+        height: 2.2rem;
+        padding: 3rem; 
+        border-bottom: 0.11rem solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0rem;
+        margin-bottom: 3rem;
+    }
+    .profile-box {
+        margin-left: 0rem;
+        margin-bottom: 3rem;
+        
+    }
+}

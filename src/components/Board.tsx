@@ -216,46 +216,48 @@ export default function Board() {
         }
       >
       {/* Progress bar container */}
-      <div className="progress-bar">
-        <div
-          className="progress-fill"
-          style={{ height: `${progress}%` }}
-        />
-        <div className="progress-label">
-          {blackPieces !== 0 ? `M${blackPieces}` : '1-0'}
+      <div className='board-progress-container'>
+        <div className="progress-bar">
+          <div
+            className="progress-fill"
+            style={{ height: `${progress}%` }}
+          />
+          <div className="progress-label">
+            {blackPieces !== 0 ? `M${blackPieces}` : '1-0'}
+          </div>
         </div>
-      </div>
 
-      <div className="border">
-        <div ref={boardRef} className="board">
-          {board
-            .slice().reverse()
-            .map((row, revR) =>
-              row.map((piece, c) => {
-                const r = 7 - revR
-                const isHovered = hoverSquare?.r === r && hoverSquare?.c === c
-                return (
-                  <div key={`${r}-${c}`} className={`square${isHovered ? ' hovered' : ''}`}>
-                    {piece && (
-                      <img
-                        draggable={false}
-                        src={imgOf(piece)}
-                        onPointerDown={e => onPointerDown(e, r, c)}
-                        className={`piece${dragging?.r === r && dragging?.c === c ? ' faded' : ''}`}
-                        style={{
-                          /* just set the per-square delay */
-                          '--delay': `${delays[r][c]}s`
-                        } as React.CSSProperties}
-                      />
-                    )}
-                  </div>
-                )
-              })
-            )
-          }
+        <div className="border">
+          <div ref={boardRef} className="board">
+            {board
+              .slice().reverse()
+              .map((row, revR) =>
+                row.map((piece, c) => {
+                  const r = 7 - revR
+                  const isHovered = hoverSquare?.r === r && hoverSquare?.c === c
+                  return (
+                    <div key={`${r}-${c}`} className={`square${isHovered ? ' hovered' : ''}`}>
+                      {piece && (
+                        <img
+                          draggable={false}
+                          src={imgOf(piece)}
+                          onPointerDown={e => onPointerDown(e, r, c)}
+                          className={`piece${dragging?.r === r && dragging?.c === c ? ' faded' : ''}`}
+                          style={{
+                            /* just set the per-square delay */
+                            '--delay': `${delays[r][c]}s`
+                          } as React.CSSProperties}
+                        />
+                      )}
+                    </div>
+                  )
+                })
+              )
+            }
+          </div>
         </div>
+        {capturedPiece && <CapturedCard piece={capturedPiece} />}
       </div>
-      {capturedPiece && <CapturedCard piece={capturedPiece} />}
     </div>
   )
 }

@@ -32,6 +32,11 @@
   grid-template: repeat(8, 1fr) / repeat(8, 1fr);
 }
 
+.board-progress-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .square {
   aspect-ratio: 1 / 1;
   width: 100%;
@@ -119,4 +124,28 @@
   text-align: center;
   color: black;
   font-size: 0.6rem;
+}
+
+@media (orientation: portrait) {
+  .board {
+    width: 90rem;
+  }
+  .board-wrapper {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    top: 17rem;
+    left: 1.5rem;
+    align-items: stretch;
+  }
+  .board-progress-container {
+    display: flex;
+    flex-direction: row;
+  }
+  .progress-label {
+    font-size: 1.5rem;
+  }
+  .progress-bar {
+    width: 3.5rem;
+  }
 }
