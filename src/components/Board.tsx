@@ -256,8 +256,8 @@ export default function Board() {
             }
           </div>
         </div>
-        {capturedPiece && <CapturedCard piece={capturedPiece} />}
-      </div>
+      </div>  
+      {capturedPiece && <CapturedCard piece={capturedPiece} />}
     </div>
   )
 }

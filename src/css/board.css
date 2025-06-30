@@ -73,8 +73,7 @@
 }
 
 .piece.faded {
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
+  opacity: 0;
 }
 
 .board-wrapper {
@@ -89,11 +88,6 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
-}
-
-.board-wrapper.shifted {
-  /* only when there’s a capturedPiece */
-  transform: translateX(-20%);
 }
 
 .progress-bar {
@@ -135,17 +129,27 @@
     justify-content: center;
     align-items: center;
     top: 17rem;
+    /* left: 21rem; */
     left: 1.5rem;
     align-items: stretch;
   }
   .board-progress-container {
     display: flex;
-    flex-direction: row;
+    margin-bottom: 1rem;
   }
   .progress-label {
     font-size: 1.5rem;
   }
   .progress-bar {
     width: 3.5rem;
+  }
+}
+
+
+
+@media (orientation: landscape) {
+  /* only when there’s a capturedPiece and is horizontal*/
+  .board-wrapper.shifted {
+    transform: translateX(-20%);
   }
 }

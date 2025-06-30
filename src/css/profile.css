@@ -122,4 +122,24 @@
         margin-bottom: 3rem;
         
     }
+    
+    .profile-img {
+        width: 30rem;
+    }
+
+    .title-text {
+        font-size: 4rem;
+    }
+    .info {
+        padding: 2rem 1.5rem;
+    }
+    
+    .text {
+        font-size: 2rem;
+    }
+    .text-box {
+        width: 87rem;
+        padding: 1.5rem 2rem;
+        margin: 1rem 0;
+    }
 }

@@ -6,7 +6,6 @@ html, body, #root {
   font-family: 'Cinzel', serif;
   background-color: rgb(217,228,232);
   cursor: url('/cursor.png') 0 0, auto;
-  overflow: hidden;
   font-size: 1vw;
 }
 
