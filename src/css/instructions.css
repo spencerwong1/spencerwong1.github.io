@@ -1,9 +1,7 @@
 /* full-screen semi-transparent backdrop */
 .instructions-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;                            /* shorthand for top:0; right:0; bottom:0; left:0 */
   background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
@@ -11,16 +9,20 @@
   z-index: 999;
 }
 
-/* the white “modal” box */
+/* white “modal” box */
 .instructions-modal {
   position: relative;
   background: #fff;
+  box-sizing: border-box;              /* include padding & border in width/height */
+  
+  width: 80vw;                         /* 80% of viewport width */
+  max-width: 40rem;                    /* cap at 640px for large screens */
+  max-height: 90vh;                    /* never overflow viewport height */
+  
   padding: 2rem;
   border-radius: 0.5rem;
-  max-width: 90vw;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+  overflow-y: auto;                    /* scroll only if content is too tall */
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
 }
 
 /* floating “×” button */
@@ -32,4 +34,35 @@
   background: none;
   border: none;
   cursor: pointer;
+  line-height: 1;                      /* prevent vertical misalignment */
+  padding: 0;                          /* remove default button padding */
+}
+
+@media (max-width: 100vh) {
+  .instructions-modal {
+    width: 95vw;
+    max-width: 75rem;
+
+    height: 90vh;
+    max-height: 35vh;
+  }
+
+  .instructions-modal h2 {
+    font-size: 3rem;   /* ~40px */
+    margin-bottom: 1rem;
+  }
+
+  /* Bigger body text */
+  .instructions-modal p,
+  .instructions-modal ul li {
+    font-size: 2rem;   /* ~24px */
+    line-height: 2;
+  }
+
+  /* Larger close button */
+  .instructions-close-btn {
+    font-size: 3rem;   /* ~40px */
+    top: 1rem;
+    right: 1.5rem;
+  }
 }

@@ -5,9 +5,10 @@
   "type": "module",
   "homepage": "https://spencerwong1.github.io",
   "scripts": {
+    
     "predeploy": "npm run build && echo > dist/.nojekyll",
     "deploy": "gh-pages -d dist",
-    "dev": "vite",
+    "dev": "vite --force",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
