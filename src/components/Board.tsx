@@ -208,6 +208,7 @@ export default function Board() {
           `board-wrapper${initial ? ' initial' : ''}` +
           (capturedPiece?.type === 'profile' || 
           capturedPiece?.type === 'dropfinder' ||
+          capturedPiece?.type === 'cryptoKraker' ||
           capturedPiece?.type === 'ezmail' ? ' shifted' : '')
           // (capturedPiece?.color === 'black' ? ' shifted' : '')
         }

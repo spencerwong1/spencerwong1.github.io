@@ -13,7 +13,7 @@ export default function Ezmail() {
     "Being a first gen Australian, english was not my parents' first language...",
     "I was pestered to write emails or make phone calls for a myriad of tasks...",
     "So I decided to use my coding skills to simplify emails for them...",
-    "This marked the birth of Ezmail! Made this for you Mum ❤️",
+    "Utilising OpenAi API, This marked the birth of Ezmail! Made this for you Mum ❤️",
   ]
   const [step, setStep] = useState(0);
 

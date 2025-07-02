@@ -13,7 +13,7 @@ export default function Dropfinder() {
     'I found myself constantly trying to time my workout sets to the beatdrop of songs...',
     "or skipping to find the melody/beatdrop of a friend's recommendation...",
     "who the has time to actually listen to an entire song before giving it a rating? 😆",
-    "That’s how Dropfinder came to life!"
+    "Upon thorough Spotify API reserach, Dropfinder came to life!"
   ]
   const [step, setStep] = useState(0);
 

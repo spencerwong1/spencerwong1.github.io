@@ -8,14 +8,13 @@
     color: rgb(217,228,232);
 }
 
-.ezmail-box {
-    margin-right: 2rem;
+.cryptokraker-box {
     margin-left: 3rem;
     display: flex;
     flex-direction: column;
 }
 
-.great-box {
+.excellent-box {
     height: 2.2rem;
     padding: 0.5rem;
     border-bottom: 0.11rem solid black;
@@ -27,13 +26,13 @@
 }
 
 
-.great-img {
+.excellent-img {
     height: 1.5em;
     margin-left: 0.5em;
 }
 
 
-.ezmail-card {
+.cryptokraker-card {
     display: flex;
     flex-direction: column;
     background-color: #2f2f2f;
@@ -68,7 +67,7 @@
     align-items: center;
 }
 
-.ezmail {
+.cryptokraker {
     margin: 0.5rem 0rem;
     padding-top: 1rem;
     border: 0.3rem solid #585858;
@@ -117,7 +116,7 @@
 
 .description-text {
     color: rgb(217,228,232);
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     text-transform: none;
 }
 
@@ -142,10 +141,10 @@
 }
 
 @media (orientation: portrait) {
-    .great-text {
+    .excellent-text {
         font-size: 4rem;
     }
-    .great-box {
+    .excellent-box {
         height: 2.2rem;
         padding: 3rem; 
         border-bottom: 0.11rem solid black;
@@ -155,12 +154,13 @@
         border-radius: 0rem;
         margin-bottom: 3rem;
     }
-    .ezmail-box {
+    .cryptokraker-box {
         margin-left: 0rem;
+        margin-right: 2rem;
         margin-bottom: 3rem;
     }
     
-    .ezmail {
+    .cryptokraker {
         width: 50rem;
     }
     
