@@ -8,13 +8,14 @@
     color: rgb(217,228,232);
 }
 
-.profile-box {
+.linkedin-box {
+    margin-right: 2rem;
     margin-left: 3rem;
     display: flex;
     flex-direction: column;
 }
 
-.brilliant-box {
+.book-box {
     height: 2.2rem;
     padding: 0.5rem;
     border-bottom: 0.11rem solid black;
@@ -26,21 +27,20 @@
 }
 
 
-.brilliant-img {
+.book-img {
     height: 1.5em;
     margin-left: 0.5em;
 }
 
 
-
-.profile-card {
+.linkedin-card {
     display: flex;
     flex-direction: column;
     background-color: #2f2f2f;
     border-radius: 2rem;
     border: 0.4rem solid #585858;
     border-radius: 0.3rem;
-    padding: 1rem;
+    padding: 0.5rem;
     border-style: outset;
     flex: 1;
 }
@@ -60,23 +60,43 @@
     border-radius: 0.2rem;
 }
 
-.img-box {
+
+.top-box {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    margin: 0.4rem 0rem;
-    background-color: white;
-    padding-top: 1rem;
-    background-image: url("src/assets/background.png");
-    border: 0.3rem solid #585858;
-    background-color: #2f2f2f;
-    border-style: outset; 
 }
 
-.profile-img {
-    width: 16rem;
-    margin: 0rem;
+.linkedin {
+    margin: 0.5rem 0rem;
+    padding-top: 1rem;
+    border: 0.3rem solid #585858;
+    border-style: inset; 
+    width: 15rem;
+    background-color: rgb(90,90,90);
+    background-image: url("src/assets/background.png");
 }
+
+.icon-box {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.icon:hover {
+  opacity: 0.6;
+}
+
+.icon {
+    padding: 0.2rem 0.2rem;
+    border: 0.2rem solid #585858;
+    border-style: outset; 
+    width: 2rem;
+    border-radius: 0.4rem;
+}
+
 
 .title-text {
     font-size: 1.6rem;
@@ -86,28 +106,46 @@
 }
 
 .info {
+    margin-top: 0.5rem;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
-    padding: 0rem 0.8rem;
+    justify-content: space-between;
+    padding: 0.7rem 0.7rem;
+    padding-bottom: 0.5rem;
     background-color: rgb(90,90,90)
 }
 
-.text-box {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.35rem 0.5rem;
-  width: 20.5rem;
-  box-shadow: 0.1rem 0.1rem black;
-  margin: 0.25rem 0;
+.description-text {
+    color: rgb(217,228,232);
+    font-size: 1.3rem;
+    text-transform: none;
 }
 
+.next {
+    height: 1.7rem;
+    border: none;
+    border-top: 0.1rem solid black;
+    background-color: rgb(90,90,90);
+}
+
+.next:hover {
+    background-color: grey; 
+}
+
+@supports selector(.info:has(.next)) {
+  .info:not(:has(.next)) {
+    justify-content: flex-start;
+  }
+  .description-text {
+    padding-top: 0.1rem;
+  }
+}
 
 @media (orientation: portrait) {
-    .brilliant-text {
+    .book-text {
         font-size: 4rem;
     }
-    .brilliant-box {
+    .book-box {
         height: 2.2rem;
         padding: 3rem; 
         border-bottom: 0.11rem solid black;
@@ -117,29 +155,44 @@
         border-radius: 0rem;
         margin-bottom: 3rem;
     }
-    .profile-box {
-        height: 94rem;
+    .linkedin-box {
         margin-left: 0rem;
         margin-bottom: 3rem;
     }
     
-    .profile-img {
-        width: 30rem;
+    .linkedin {
+        width: 50rem;
+    }
+    
+    .icon-box {
+        gap: 1rem !important;
+    }
+
+    .icon {
+        width: 8rem !important;
     }
 
     .title-text {
         font-size: 4rem;
     }
     .info {
-        padding: 0rem 1.5rem;
+        padding: 2rem 1.5rem;
+        height: 30rem;
     }
     
     .text {
-        font-size: 2rem;
+        font-size: 3rem !important;
     }
+
     .text-box {
         width: 87rem;
         padding: 1.5rem 2rem;
         margin: 1rem 0;
+    }
+    .description-text {
+        font-size: 5rem !important;
+    }
+    .next {
+        height: 3rem !important;
     }
 }

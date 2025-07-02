@@ -98,16 +98,6 @@ export default function Board() {
       setBlackPieces(n => n - 1);
       setCapturedPiece(target);
     }
-    switch (target.type) {
-      case 'github':
-        window.open('https://github.com/spencerwong1', '_blank')
-        break
-      case 'linkedin':
-        window.open('https://www.linkedin.com/in/spencerwongg/', '_blank')
-        break
-      default:
-        break
-    }
   }
 
   function onPointerDown(
@@ -206,11 +196,7 @@ export default function Board() {
       <div
         className={
           `board-wrapper${initial ? ' initial' : ''}` +
-          (capturedPiece?.type === 'profile' || 
-          capturedPiece?.type === 'dropfinder' ||
-          capturedPiece?.type === 'cryptoKraker' ||
-          capturedPiece?.type === 'ezmail' ? ' shifted' : '')
-          // (capturedPiece?.color === 'black' ? ' shifted' : '')
+          (capturedPiece?.color === 'black' ? ' shifted' : '')
         }
       >
       {/* Progress bar container */}
