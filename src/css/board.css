@@ -146,6 +146,14 @@
 }
 
 
+/* Remove scrollable for phone use */
+.board-wrapper,
+.board,
+.square,
+.piece {
+  touch-action: none;
+  overscroll-behavior: contain;
+}
 
 @media (orientation: landscape) {
   /* only when there’s a capturedPiece and is horizontal*/
