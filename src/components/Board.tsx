@@ -109,7 +109,7 @@ export default function Board() {
         window.open('https://spencerwong1.github.io/ezmail/', '_blank')
         break
       case 'dropfinder':
-        window.open('https://spencerwong1.github.io/dropfinder/', '_blank')
+        // window.open('https://spencerwong1.github.io/dropfinder/', '_blank')
         break
       default:
         break
@@ -212,7 +212,8 @@ export default function Board() {
       <div
         className={
           `board-wrapper${initial ? ' initial' : ''}` +
-          (capturedPiece?.type === 'profile' ? ' shifted' : '')
+          (capturedPiece?.type === 'profile' || capturedPiece?.type === 'dropfinder' ? ' shifted' : '')
+          // (capturedPiece?.color === 'black' ? ' shifted' : '')
         }
       >
       {/* Progress bar container */}
