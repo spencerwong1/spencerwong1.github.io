@@ -118,6 +118,7 @@
     color: rgb(217,228,232);
     font-size: 1.4rem;
     text-transform: none;
+    padding-top: 0.5rem;
 }
 
 .next {
@@ -134,9 +135,6 @@
 @supports selector(.info:has(.next)) {
   .info:not(:has(.next)) {
     justify-content: flex-start;
-  }
-  .description-text {
-    padding-top: 0.1rem;
   }
 }
 

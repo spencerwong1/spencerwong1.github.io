@@ -44,11 +44,13 @@ export default function Ezmail() {
         </div>
         
         <div className="info">
-          <div className="text">
-            [ Description ]
-          </div>
-          <div className="description-text">
-            {script[step]}
+          <div className='box'>
+            <div className="text">
+              [ Description ]
+            </div>
+            <div className="description-text">
+              {script[step]}
+            </div>
           </div>
           {step < script.length - 1 && (
             <button className="next" onClick={handleNext}>

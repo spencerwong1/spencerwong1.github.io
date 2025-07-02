@@ -32,6 +32,18 @@
   grid-template: repeat(8, 1fr) / repeat(8, 1fr);
 }
 
+.arrow {
+  position: absolute;
+  height: 2.7rem;
+  transform: rotate(-45deg);
+  top: 29rem;
+  left: 19rem;
+  opacity: 80%;
+  pointer-events: none;      /* so clicks/presses pass straight through */
+  -webkit-user-drag: none;   /* prevent the browser’s default drag image */
+  user-select: none;         /* avoid accidental selection on desktop */
+}
+
 .board-progress-container {
   display: flex;
   flex-direction: row;
@@ -142,6 +154,12 @@
   }
   .progress-bar {
     width: 3.5rem;
+  }
+  
+  .arrow {
+    height: 6rem;
+    top: 66rem;
+    left: 41rem;
   }
 }
 

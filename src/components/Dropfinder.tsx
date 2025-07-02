@@ -13,7 +13,7 @@ export default function Dropfinder() {
     'I found myself constantly trying to time my workout sets to the beatdrop of songs...',
     "or skipping to find the melody/beatdrop of a friend's recommendation...",
     "who the has time to actually listen to an entire song before giving it a rating? 😆",
-    "Upon thorough Spotify API reserach, Dropfinder came to life!"
+    "Upon thorough Spotify API research, Dropfinder came to life!"
   ]
   const [step, setStep] = useState(0);
 
@@ -43,11 +43,13 @@ export default function Dropfinder() {
         </div>
         
         <div className="info">
-          <div className="text">
-            [ Description ]
-          </div>
-          <div className="description-text">
-            {script[step]}
+          <div>
+            <div className="text">
+              [ Description ]
+            </div>
+            <div className="description-text">
+              {script[step]}
+            </div>
           </div>
           {step < script.length - 1 && (
             <button className="next" onClick={handleNext}>

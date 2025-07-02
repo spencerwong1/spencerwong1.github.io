@@ -37,11 +37,13 @@ export default function Cryptokraker() {
         </div>
         
         <div className="info">
-          <div className="text">
-            [ Description ]
-          </div>
-          <div className="description-text">
-            {script[step]}
+          <div>
+            <div className="text">
+              [ Description ]
+            </div>
+            <div className="description-text">
+              {script[step]}
+            </div>
           </div>
           {step < script.length - 1 && (
             <button className="next" onClick={handleNext}>

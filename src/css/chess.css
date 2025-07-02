@@ -1,7 +1,7 @@
 
 .text {
     color: rgb(217,228,232);
-    font-size: 0.85rem;
+    font-size: 1rem;
 }
 
 .white {
@@ -117,8 +117,9 @@
 
 .description-text {
     color: rgb(217,228,232);
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     text-transform: none;
+    padding-top: 0.5rem;
 }
 
 .next {
@@ -135,9 +136,6 @@
 @supports selector(.info:has(.next)) {
   .info:not(:has(.next)) {
     justify-content: flex-start;
-  }
-  .description-text {
-    padding-top: 0.1rem;
   }
 }
 
@@ -181,7 +179,7 @@
     }
     
     .text {
-        font-size: 3rem !important;
+        font-size: 3.4rem !important;
     }
 
     .text-box {

@@ -21,6 +21,7 @@ import linkedin from '../assets/linkedin.png';
 import profile from '../assets/black-king.png';
 import cryptoKraker from '../assets/Cryptokraker.png';
 import chess from '../assets/chess.png';
+import arrow from '../assets/arrow.png';
 
 import { CapturedCard } from './CapturedCard';
 
@@ -49,7 +50,7 @@ const customPlacements: Placement[] = [
   { row: 6, col: 1, piece: { type: 'linkedin', moved: false, color: 'black' } },
   { row: 4, col: 2, piece: { type: 'profile', moved: false, color: 'black' } },
   { row: 4, col: 7, piece: { type: 'cryptoKraker', moved: false, color: 'black' } },
-  { row: 3, col: 4, piece: { type: 'chess', moved: false, color: 'black' } },
+  { row: 2, col: 4, piece: { type: 'chess', moved: false, color: 'black' } },
 ];
 
 export default function Board() {
@@ -64,7 +65,7 @@ export default function Board() {
   const [blackPieces, setBlackPieces] = useState(7);
   const [capturedPiece, setCapturedPiece] = useState<Piece | null>(null);
   const [dragging, setDragging] = useState<{ r: number, c: number } | null>(null);
-
+  const [hasMoved, setHasMoved] = useState(false);
 
   const [initial, setInitial] = useState(true);
 
@@ -172,6 +173,8 @@ export default function Board() {
 
       const target = board[tr][tc]
       if (isLegalMove(board, fr, fc, tr, tc)) {
+        setHasMoved(true);
+
         if (target && ['ezmail','dropfinder','github','linkedin','profile','cryptoKraker', 'chess'].includes(target.type)) {
           handleCapture(target)
         }
@@ -195,12 +198,12 @@ export default function Board() {
   }
 
   return (
-      <div
-        className={
-          `board-wrapper${initial ? ' initial' : ''}` +
-          (capturedPiece?.color === 'black' ? ' shifted' : '')
-        }
-      >
+    <div
+      className={
+        `board-wrapper${initial ? ' initial' : ''}` +
+        (capturedPiece?.color === 'black' ? ' shifted' : '')
+      }
+    >
       {/* Progress bar container */}
       <div className='board-progress-container'>
         <div className="progress-bar">
@@ -240,6 +243,7 @@ export default function Board() {
                 })
               )
             }
+            {!hasMoved && <img className="arrow" src={arrow} alt="First move hint" />}
           </div>
         </div>
       </div>  
