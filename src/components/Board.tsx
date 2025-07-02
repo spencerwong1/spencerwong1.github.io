@@ -105,12 +105,6 @@ export default function Board() {
       case 'linkedin':
         window.open('https://www.linkedin.com/in/spencerwongg/', '_blank')
         break
-      case 'ezmail':
-        window.open('https://spencerwong1.github.io/ezmail/', '_blank')
-        break
-      case 'dropfinder':
-        // window.open('https://spencerwong1.github.io/dropfinder/', '_blank')
-        break
       default:
         break
     }
@@ -212,7 +206,9 @@ export default function Board() {
       <div
         className={
           `board-wrapper${initial ? ' initial' : ''}` +
-          (capturedPiece?.type === 'profile' || capturedPiece?.type === 'dropfinder' ? ' shifted' : '')
+          (capturedPiece?.type === 'profile' || 
+          capturedPiece?.type === 'dropfinder' ||
+          capturedPiece?.type === 'ezmail' ? ' shifted' : '')
           // (capturedPiece?.color === 'black' ? ' shifted' : '')
         }
       >

@@ -8,13 +8,13 @@
     color: rgb(217,228,232);
 }
 
-.dropfinder-box {
+.ezmail-box {
     margin-left: 3rem;
     display: flex;
     flex-direction: column;
 }
 
-.best-box {
+.great-box {
     height: 2.2rem;
     padding: 0.5rem;
     border-bottom: 0.11rem solid black;
@@ -26,13 +26,13 @@
 }
 
 
-.best-img {
+.great-img {
     height: 1.5em;
     margin-left: 0.5em;
 }
 
 
-.dropfinder-card {
+.ezmail-card {
     display: flex;
     flex-direction: column;
     background-color: #2f2f2f;
@@ -67,7 +67,7 @@
     align-items: center;
 }
 
-.dropfinder {
+.ezmail {
     margin: 0.5rem 0rem;
     padding-top: 1rem;
     border: 0.3rem solid #585858;
@@ -116,7 +116,7 @@
 
 .description-text {
     color: rgb(217,228,232);
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     text-transform: none;
 }
 
@@ -141,10 +141,10 @@
 }
 
 @media (orientation: portrait) {
-    .best-text {
+    .great-text {
         font-size: 4rem;
     }
-    .best-box {
+    .great-box {
         height: 2.2rem;
         padding: 3rem; 
         border-bottom: 0.11rem solid black;
@@ -154,12 +154,12 @@
         border-radius: 0rem;
         margin-bottom: 3rem;
     }
-    .dropfinder-box {
+    .ezmail-box {
         margin-left: 0rem;
         margin-bottom: 3rem;
     }
     
-    .dropfinder {
+    .ezmail {
         width: 50rem;
     }
     
