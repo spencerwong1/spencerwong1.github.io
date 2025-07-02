@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 export default function Ezmail() {
   const script = [
-    "Being a first gen Australian, english was not my parents' first language...",
+    "Being a first gen Australian, english is not my parents' first language...",
     "I was pestered to write emails or make phone calls for a myriad of tasks...",
     "So I decided to use my coding skills to simplify emails for them...",
     "Utilising OpenAi API, This marked the birth of Ezmail! Made this for you Mum ❤️",
