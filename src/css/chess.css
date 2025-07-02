@@ -1,0 +1,198 @@
+
+.text {
+    color: rgb(217,228,232);
+    font-size: 0.85rem;
+}
+
+.white {
+    color: rgb(217,228,232);
+}
+
+.chess-box {
+    margin-right: 2rem;
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.good-box {
+    height: 2.2rem;
+    padding: 0.5rem;
+    border-bottom: 0.11rem solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0rem;
+    margin-bottom: 1.1rem;
+}
+
+
+.good-img {
+    height: 1.5em;
+    margin-left: 0.5em;
+}
+
+
+.chess-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #2f2f2f;
+    border-radius: 2rem;
+    border: 0.4rem solid #585858;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    border-style: outset;
+    flex: 1;
+}
+
+.title-box {
+    padding: 0.5rem;
+    border: 0.25rem;
+    border-color: 
+        rgb(200,200,200)
+        #2f2f2f
+        #2f2f2f
+        rgb(200,200,200);
+    border-style: outset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.2rem;
+}
+
+
+.top-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chess {
+    margin: 0.5rem 0rem;
+    padding-top: 1rem;
+    border: 0.3rem solid #585858;
+    border-style: inset; 
+    width: 15rem;
+    background-color: rgb(90,90,90);
+    background-image: url("src/assets/background.png");
+}
+
+.icon-box {
+    display: flex;
+    justify-content: center;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.icon:hover {
+  opacity: 0.6;
+}
+
+.icon {
+    padding: 0.2rem 0.2rem;
+    border: 0.2rem solid #585858;
+    border-style: outset; 
+    width: 2rem;
+    border-radius: 0.4rem;
+}
+
+
+.title-text {
+    font-size: 1.6rem;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+}
+
+.info {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.7rem 0.7rem;
+    padding-bottom: 0.5rem;
+    background-color: rgb(90,90,90)
+}
+
+.description-text {
+    color: rgb(217,228,232);
+    font-size: 1.3rem;
+    text-transform: none;
+}
+
+.next {
+    height: 1.7rem;
+    border: none;
+    border-top: 0.1rem solid black;
+    background-color: rgb(90,90,90);
+}
+
+.next:hover {
+    background-color: grey; 
+}
+
+@supports selector(.info:has(.next)) {
+  .info:not(:has(.next)) {
+    justify-content: flex-start;
+  }
+  .description-text {
+    padding-top: 0.1rem;
+  }
+}
+
+@media (orientation: portrait) {
+    .good-text {
+        font-size: 4rem;
+    }
+    .good-box {
+        height: 2.2rem;
+        padding: 3rem; 
+        border-bottom: 0.11rem solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0rem;
+        margin-bottom: 3rem;
+    }
+    .chess-box {
+        margin-left: 0rem;
+        margin-bottom: 3rem;
+    }
+    
+    .chess {
+        width: 50rem;
+    }
+    
+    .icon-box {
+        gap: 1rem !important;
+    }
+
+    .icon {
+        width: 8rem !important;
+    }
+
+    .title-text {
+        font-size: 4rem;
+    }
+    .info {
+        padding: 2rem 1.5rem;
+        height: 30rem;
+    }
+    
+    .text {
+        font-size: 3rem !important;
+    }
+
+    .text-box {
+        width: 87rem;
+        padding: 1.5rem 2rem;
+        margin: 1rem 0;
+    }
+    .description-text {
+        font-size: 5rem !important;
+    }
+    .next {
+        height: 3rem !important;
+    }
+}

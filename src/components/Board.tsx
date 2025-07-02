@@ -20,6 +20,7 @@ import github from '../assets/github.png';
 import linkedin from '../assets/linkedin.png';
 import profile from '../assets/black-king.png';
 import cryptoKraker from '../assets/Cryptokraker.png';
+import chess from '../assets/chess.png';
 
 import { CapturedCard } from './CapturedCard';
 
@@ -48,6 +49,7 @@ const customPlacements: Placement[] = [
   { row: 6, col: 1, piece: { type: 'linkedin', moved: false, color: 'black' } },
   { row: 4, col: 2, piece: { type: 'profile', moved: false, color: 'black' } },
   { row: 4, col: 7, piece: { type: 'cryptoKraker', moved: false, color: 'black' } },
+  { row: 3, col: 4, piece: { type: 'chess', moved: false, color: 'black' } },
 ];
 
 export default function Board() {
@@ -59,7 +61,7 @@ export default function Board() {
   const ghostRef = useRef<HTMLImageElement|null>(null)
   const dragStartRef = useRef<{ fromR: number, fromC: number }|null>(null)
   const [progress, setProgress] = useState(0);
-  const [blackPieces, setBlackPieces] = useState(6);
+  const [blackPieces, setBlackPieces] = useState(7);
   const [capturedPiece, setCapturedPiece] = useState<Piece | null>(null);
   const [dragging, setDragging] = useState<{ r: number, c: number } | null>(null);
 
@@ -89,12 +91,12 @@ export default function Board() {
 );
 
   const imgOf = (p: Piece) =>
-    ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, cryptoKraker}[p.type]!)
+    ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, cryptoKraker, chess}[p.type]!)
 
   // Open websites upon github or linkedin
   function handleCapture(target: Piece) {
     if (target.color == 'black') {
-      setProgress(p => p + 50/6);
+      setProgress(p => p + 50/7);
       setBlackPieces(n => n - 1);
       setCapturedPiece(target);
     }
@@ -170,7 +172,7 @@ export default function Board() {
 
       const target = board[tr][tc]
       if (isLegalMove(board, fr, fc, tr, tc)) {
-        if (target && ['ezmail','dropfinder','github','linkedin','profile','cryptoKraker'].includes(target.type)) {
+        if (target && ['ezmail','dropfinder','github','linkedin','profile','cryptoKraker', 'chess'].includes(target.type)) {
           handleCapture(target)
         }
         setBoard(b => doMove(b, fr, fc, tr, tc))

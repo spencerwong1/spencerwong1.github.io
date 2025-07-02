@@ -10,7 +10,7 @@ export default function Cryptokraker() {
     "I took it as a challenge to conjoin my computer science and finance background...",
     "Hence using Kraken API, cryptoKraker was born!...",
     "although I am yet to still make money...", 
-    "this project serves as a reminder that anything is possible with code"
+    "this project serves as a reminder that anything is possible with code ✊🏼"
   ]
   const [step, setStep] = useState(0);
 

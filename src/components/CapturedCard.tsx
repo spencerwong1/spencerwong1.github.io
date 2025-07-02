@@ -5,6 +5,7 @@ import Cryptokraker from "./Cryptokraker";
 import Profile from "./Profile";
 import Linkedin from "./Linkedin";
 import Github from "./Github";
+import Chess from "./Chess";
 
 export function CapturedCard({ piece }: { piece: Piece }) {
   switch (piece.type) {
@@ -20,6 +21,8 @@ export function CapturedCard({ piece }: { piece: Piece }) {
       return <Linkedin />;
     case "github":
       return <Github />;
+    case "chess":
+      return <Chess />;
     default:
       return null;
   }

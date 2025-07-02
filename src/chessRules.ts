@@ -10,7 +10,8 @@ export type PieceType =
 'github'|
 'linkedin'|
 'profile'|
-'cryptoKraker';
+'cryptoKraker'|
+'chess';
 
 export type Piece = {
   type: PieceType;
