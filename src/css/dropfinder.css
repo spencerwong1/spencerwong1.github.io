@@ -9,7 +9,7 @@
 }
 
 .dropfinder-box {
-    margin-left: 3rem;
+    margin-left: 5rem;
     display: flex;
     flex-direction: column;
 }
@@ -155,7 +155,7 @@
     .dropfinder-box {
         margin-left: 0rem;
         margin-right: 2rem;
-        margin-bottom: 3rem;
+        margin-bottom: 15rem;
     }
     
     .dropfinder {

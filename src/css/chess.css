@@ -10,7 +10,7 @@
 
 .chess-box {
     margin-right: 2rem;
-    margin-left: 3rem;
+    margin-left: 5rem;
     display: flex;
     flex-direction: column;
 }
@@ -155,7 +155,7 @@
     }
     .chess-box {
         margin-left: 0rem;
-        margin-bottom: 3rem;
+        margin-bottom: 15rem;
     }
     
     .chess {

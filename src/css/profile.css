@@ -9,7 +9,7 @@
 }
 
 .profile-box {
-    margin-left: 3rem;
+    margin-left: 5rem;
     display: flex;
     flex-direction: column;
 }
@@ -118,13 +118,13 @@
         margin-bottom: 3rem;
     }
     .profile-box {
-        height: 94rem;
+        height: 114.5rem;
         margin-left: 0rem;
-        margin-bottom: 3rem;
+        margin-bottom: 15rem;
     }
     
     .profile-img {
-        width: 30rem;
+        width: 50rem;
     }
 
     .title-text {

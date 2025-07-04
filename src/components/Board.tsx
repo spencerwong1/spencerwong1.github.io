@@ -1,8 +1,9 @@
 import React, { useRef, useState, useMemo, useEffect } from 'react'
-import { isLegalMove, doMove, addPiecesToBoard } from '../chessRules'
+import { isLegalMove, doMove, addPiecesToBoard, } from '../chessRules'
 import '../css/board.css'
 import type { 
-  Piece as Piece,
+  PieceType,
+  Piece,
   Board as ChessBoard,
   Placement
 } from '../chessRules'
@@ -68,6 +69,11 @@ export default function Board() {
   const [hasMoved, setHasMoved] = useState(false);
 
   const [initial, setInitial] = useState(true);
+  const [capturedStack, setCapturedStack] = useState<Piece['type'][]>([]);
+
+  useEffect(() => {
+    console.log("🗄️ capturedStack is now:", capturedStack);
+  }, [capturedStack]);
 
   useEffect(() => {
     // after 2s of max delay + 0.5s anim, remove the class
@@ -94,12 +100,14 @@ export default function Board() {
   const imgOf = (p: Piece) =>
     ({ pawn, rook, knight, bishop, queen, king, ezmail, dropfinder, github, linkedin, profile, cryptoKraker, chess}[p.type]!)
 
-  // Open websites upon github or linkedin
   function handleCapture(target: Piece) {
     if (target.color == 'black') {
       setProgress(p => p + 50/7);
       setBlackPieces(n => n - 1);
       setCapturedPiece(target);
+      
+      setCapturedStack(prev => [...prev, target.type]);
+
     }
   }
 
@@ -248,11 +256,24 @@ export default function Board() {
               src={arrow}
               style={{
                 /* just set the per-square delay */
-                '--delay': "3s"
+                '--delay': "2.5s"
               } as React.CSSProperties}
               alt="First move hint" />}
           </div>
         </div>
+
+           <div className="captured-icons-container">
+     {capturedStack.map((type, i) => (
+      <img
+         key={i}
+         src={imgOf({ type, moved: false, color: 'black' })}
+         alt={type}
+        className="captured-icon"
+        onClick={() => setCapturedPiece({ type, moved: false, color: 'black' })}
+       />
+     ))}
+   </div>
+
       </div>  
       {capturedPiece && <CapturedCard piece={capturedPiece} />}
     </div>

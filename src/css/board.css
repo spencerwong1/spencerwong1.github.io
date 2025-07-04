@@ -55,11 +55,31 @@
   left: 19rem;
   opacity: 0;
   
-  animation: arrowPopIn 300ms ease-out var(--delay) forwards;
+  animation: arrowPopIn 250ms ease-out var(--delay) forwards;
 
   pointer-events: none;      /* so clicks/presses pass straight through */
   -webkit-user-drag: none;   /* prevent the browser’s default drag image */
   user-select: none;         /* avoid accidental selection on desktop */
+}
+
+.captured-icons-container {
+  position: absolute;    /* or relative to whatever parent you want */
+  top: 1rem;             /* tweak as needed */
+  left: 45rem;
+  display: flex;
+  flex-direction: column;/* or row if you prefer */
+  gap: 0.5rem;
+}
+
+.captured-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.captured-icon:hover {
+  transform: scale(1.3);
 }
 
 .board-progress-container {
@@ -178,6 +198,19 @@
     height: 6rem;
     top: 66rem;
     left: 41rem;
+  }
+
+  .captured-icons-container {
+    top: 117rem;
+    left: 14rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .captured-icon {
+    height: 10rem;
+    width: 10rem;
   }
 }
 

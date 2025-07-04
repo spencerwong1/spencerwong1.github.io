@@ -22,7 +22,7 @@ export default function Github() {
 
       <div className="github-card">
         <div className="title-box">
-          <h1 className="title-text white"> github Card </h1>
+          <h1 className="title-text white"> Github Card </h1>
         </div>
 
         <div className = "top-box">
