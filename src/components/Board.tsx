@@ -243,7 +243,14 @@ export default function Board() {
                 })
               )
             }
-            {!hasMoved && <img className="arrow" src={arrow} alt="First move hint" />}
+            {!hasMoved && <img 
+              className="arrow"
+              src={arrow}
+              style={{
+                /* just set the per-square delay */
+                '--delay': "3s"
+              } as React.CSSProperties}
+              alt="First move hint" />}
           </div>
         </div>
       </div>  
